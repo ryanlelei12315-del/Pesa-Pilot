@@ -333,3 +333,16 @@ FAM | META SEQ | SST SEQ         | RANGE
   1 | 00000171 | 00000143 00000145 00000152 00000163 OBSOLETE SST
     |          | 00000143 00000145 00000152 00000163 SST DELETED
     |          | 00000147 00000157 00000167 META DELETED
+Time 2026-11-24T02:06:56.5361102Z
+Commit 00000180 4026 keys in 29ms 529µs 400ns
+FAM | META SEQ | SST SEQ         | RANGE
+  0 | 00000177 | 00000176 SST    |                                                                             O                        | c44bdff4074eecdb-c44bdff4074eecdb (0 MiB, fresh, 38 bytes, 1 entries, 0 tombstones)
+  2 | 00000178 | 00000174 SST    | [==================================================================================================] | 00370635fcb3252b-ffde1835c124620f (0 MiB, fresh, 117527 bytes, 392 entries, 0 tombstones)
+  1 | 00000179 | 00000175 SST    | [==================================================================================================] | 001bb17b15a0c6b5-fff70daa6e60891d (1 MiB, fresh, 1967026 bytes, 3613 entries, 0 tombstones)
+  3 | 00000180 | 00000173 SST    |                     [=======================================================================]        | 34ef6ba854ba64c6-ebc29ff8108e9f2c (0 MiB, fresh, 273 bytes, 20 entries, 0 tombstones)
+Time 2026-11-24T02:13:53.3208943Z
+Commit 00000186 1198 keys in 22ms 962µs 100ns
+FAM | META SEQ | SST SEQ         | RANGE
+  0 | 00000184 | 00000183 SST    |                                                                             O                        | c44bdff4074eecdb-c44bdff4074eecdb (0 MiB, fresh, 38 bytes, 1 entries, 0 tombstones)
+  2 | 00000185 | 00000181 SST    |                                                                                                    O | ff078261c00f822a-ff078261c00f822a (0 MiB, fresh, 736 bytes, 1 entries, 0 tombstones)
+  1 | 00000186 | 00000182 SST    | [==================================================================================================] | 00c1c29b9a74e3c5-fff67b230fbe265a (1 MiB, fresh, 1092607 bytes, 1196 entries, 0 tombstones)
