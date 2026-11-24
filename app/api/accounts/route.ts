@@ -1,0 +1,7 @@
+import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+import { db } from "../../../lib/db";
+import { apiError, userOr401 } from "../../../lib/http";
+const input = z.object({ name: z.string().trim().min(1).max(80), type: z.enum(["MPESA", "BANK", "CASH", "SAVINGS"]), openingBalance: z.number().int().min(0).max(100_000_000), reservedBalance: z.number().int().min(0).optional() });
+export async function GET() { const auth = await userOr401(); if ("response" in auth) return auth.response; return NextResponse.json(await db.financialAccount.findMany({ where: { userId: auth.userId, isActive: true }, orderBy: { createdAt: "desc" } })); }
+export async function POST(req: NextRequest) { try { const auth = await userOr401(); if ("response" in auth) return auth.response; const value = input.parse(await req.json()); if ((value.reservedBalance ?? 0) > value.openingBalance) return NextResponse.json({ error: "Reserved balance cannot exceed account balance" }, { status: 422 }); const account = await db.financialAccount.create({ data: { userId: auth.userId, name: value.name, type: value.type, openingBalance: value.openingBalance, balance: value.openingBalance, availableBalance: value.openingBalance - (value.reservedBalance ?? 0), reservedBalance: value.reservedBalance ?? 0 } }); return NextResponse.json(account, { status: 201 }); } catch (error) { return apiError(error); } }

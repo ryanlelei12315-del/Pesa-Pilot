@@ -1,0 +1,4 @@
+import { NextResponse } from "next/server";
+import { db } from "../../../lib/db";
+import { userOr401 } from "../../../lib/http";
+export async function GET() { const auth = await userOr401(); if ("response" in auth) return auth.response; const user = await db.user.findUnique({ where: { id: auth.userId }, select: { id: true, name: true, email: true, profile: true, financialAccounts: true, transactions: true, budgets: { include: { budgetCategories: true } }, financialGoals: true, recurringPayments: true, notifications: true, helbRecords: true } }); await db.dataExport.create({ data: { userId: auth.userId, format: "JSON" } }); return new NextResponse(JSON.stringify(user), { headers: { "Content-Type": "application/json", "Content-Disposition": "attachment; filename=pesapilot-export.json" } }); }
