@@ -53,7 +53,7 @@ PesaPilot is a private, light-mode financial operating system built specifically
 
 - **Framework**: [Next.js](https://nextjs.org/) (App Router, Server & Client Components)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) (Strict type safety)
-- **Database & ORM**: [SQLite](https://www.sqlite.org/) with [Prisma ORM](https://www.prisma.io/)
+- **Database & ORM**: [Supabase PostgreSQL](https://supabase.com/) with [Prisma ORM](https://www.prisma.io/)
 - **Authentication**: Secure HTTP-only cookie sessions with SHA-256 token hashing & bcrypt password encryption
 - **Styling**: Pure Light-Mode Design System (`app/globals.css`) with restrained typography and smooth micro-transitions
 - **Testing**: [Vitest](https://vitest.dev/) with comprehensive unit tests for regex SMS parsing and financial cashflow engines
